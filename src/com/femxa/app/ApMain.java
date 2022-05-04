@@ -1,57 +1,45 @@
 package com.femxa.app;
 
+import com.femxa.utils.DatosPrimitivos;
+import java.util.Scanner;
+
 public class ApMain {
 
     public static void main(String[] args) {
-        // TODO code application logic here
-
-        //Datos primitivos númericos enteros de menor a mayor
-        byte maxByte = 127;
-        maxByte++; // maxByte = maxByte + 1;
-        System.out.println("Número máximo maxByte = "+ maxByte);
-        short maxShort = Short.MAX_VALUE; 
-        System.out.println("Número máximo short = " + maxShort);
-        int maxInt = Integer.MAX_VALUE;
-        System.out.println("Número máximo int = " + maxInt);
-        long maxLong = Long.MAX_VALUE;
-        System.out.println("Número máximo long = " + maxLong);
-        //int 4num = 10; //Error de compilación los nombres no pueden empezar con números
-        //var var = 5; //Este identificador es legal, pero no es una buena práctica
-
-        //Datos primitivos númericos con punto flotante (decimales) de menor a mayor
-        float maxFloat = Float.MAX_VALUE;
-        System.out.println("Número máximo float = " + String.format("%.2f", maxFloat));
-       //System.out.printf("Número máximo float = %.2f ", maxFloat);
-        double maxDouble = Double.MAX_VALUE;
-        System.out.println("Número máximo double = "+ String.format("%.2f", maxDouble));
+        Scanner sc = new Scanner(System.in);
+        DatosPrimitivos dp = new DatosPrimitivos();
+        
+        dp.showMaxPrimitives();
+        dp.showMaxPrimitives();
+        dp.showMaxPrimitives();
         
         //Prácticas
         long numLong = 9_223_372_036_854_775_807L;
-        numLong = (long) maxFloat;
-        float numFloat = 9f; 
+        numLong = (long) 56.5f;
+        float numFloat = 9f;
         int numInt = 2;
         float result = (int) numFloat / numInt; // 4.0
         System.out.println(result);
-        System.out.print(1+2+" ");
-        System.out.println(""+(1+2));
-        
+        System.out.print(1 + 2 + " ");
+        System.out.println("" + (1 + 2));
+
         //Datos primitivos no númericos
         char caracter = 'C'; //Character -> Clase Wrapper (Clase Envoltorio)
         caracter = 65;
         caracter++; // caracter
-        caracter = (char) maxByte;
+        caracter = (char) 127;
         caracter = '\u0041';
         System.out.println(caracter);
-        
+
         boolean condicional = true;
         condicional = numInt == numFloat;
         System.out.println(condicional);
-        
+
         // String (Cadena de caracteres)
         String text = "Luke yo soy tu padre";
         //length() -> Obtenemos el número de caracteres 
         int textSize = text.length();
-        System.out.println("La frase tiene "+textSize+" caracteres.");
+        System.out.println("La frase tiene " + textSize + " caracteres.");
         //toUpperCase() -> Pasamos el texto a mayusculas
         text = text.toUpperCase();
         System.out.println(text);
@@ -66,11 +54,47 @@ public class ApMain {
         //equals() -> Comparamos el texto
         compareText = text.equals(text2);
         System.out.println(compareText);
-        //
-        System.out.println(text.substring(text.length()-5, text.length()-2));
+        //substring(int posInicial, int posEnd) -> Devuelve un String con la parte de texto indicada entre el punto inicial (inclusivo) y el punto final (exclusivo)
+        System.out.println(text.substring(text.length() - 5, text.length()));
+        //charAt(int pos) -> Devuelve un char que corresponde al caracter de la posición indicada
+        System.out.println("Introduzca un número entero entre 0 y 20: ");
+        int num = sc.nextInt();
+        char letra = text.charAt(num);
+        System.out.println("El caracter en la posicion " + num + " es:" + letra);
+        //indexOf(String text) -> nos devuelve la posición de la primera letra del texto si lo encuentra. Si no, nos devuelve -1.
+        System.out.println("Introduce una palabra para buscar en el texto: ");
+            //String newText = sc.next();
+            //int indexText = text.indexOf(newText);
+            //System.out.println("El texto señalado se encuentra en la posición: " + indexText);
+        System.out.println("El texto señalado se encuentra en la posición: " + text.indexOf(sc.next()));
+            //System.out.println(text.charAt(text.indexOf(sc.next())));
+        //replace(CharSequence ch1, CharSequence ch2) -> sustituimos el arg 1 por el arg 2 dentro del String
+        text = text.replace("u", "o");
+        System.out.println(text);
+        //startsWith(String s) y endsWith(String s) -> Devuelve boolean (true/false) si empieza o termina con el argumento indicado
+        System.out.println(text.startsWith("loke"));
+        System.out.println(text.endsWith("padre"));
+        //trim() -> quita los espacios en blanco al principio y al final del texto
+        System.out.println(" Hola ".trim());
+        //concat(String nuevoTexto) -> concatena nuevo texto con el existente
+        text += " cosa nueva"; // similar -> text = text + " cosa nueva";
+        text = text.concat(" otra cosa nueva");
+        System.out.println(text);
+
+        //STRINGBUILDER -> Es una clase mutable. En lugar de devolver una referencia a un nuevo objeto, modificas el objeto actual cuando operamos con un método
+        StringBuilder sb = new StringBuilder(text);
+        //reverse()-> Da la vuelta al texto
+        System.out.println(sb.reverse());
+        //append(tipoDeDato dato)-> concatena nuevo texto con el existente
+        System.out.println(sb.append(" algo más"));
+        //delete(int posIn, int posFin)-> Señalamos posicion inicial(inclusiva) y posicion final(exclusiva) y eliminamos esa parte del texto
+        System.out.println(sb.delete(10, 24));
+        //insert(int pos, tipoDeDato dato) -> añade el dato nuevo en la posición indicada
+        System.out.println(sb.insert(10, " texto nuevo "));
         
         String numeroEnTexto = String.valueOf(numLong);
-        String numeroEnTexto2 = ""+numLong;
+        String numeroEnTexto2 = "" + numLong;
         
     }
+
 }
