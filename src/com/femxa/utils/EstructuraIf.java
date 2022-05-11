@@ -34,7 +34,7 @@ public class EstructuraIf {
         System.out.println("Introduzca una palabra: ");
         String palabra = sc.next(); 
         if (Character.isLetter(palabra.charAt(0))) {
-            
+
         }
         else if(Character.isDigit(palabra.charAt(0))){
             
