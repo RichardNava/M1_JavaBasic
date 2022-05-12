@@ -39,7 +39,8 @@ public class ApMain {
 
         Matrices matrix = new Matrices();
         //matrix.ejemplos();
-        matrix.matNumbers(sc);
+        //matrix.matNumbers(sc);
+        //matrix.breakContinue();
 //        
 //        char[] vowels = new char[]{'a', 'e', 'i', 'o', 'u'};
 //
@@ -67,16 +68,12 @@ public class ApMain {
 //            z--;
 //        }
 
+        int m[] = {1, 2, 3, 4, 5};
+        for (int i = 1; i <5; i +=2) {
+            System.out.print(m[i]);
+        }
+
         sc.close();
     }
 
-}
-
-class Array {
-
-    private long length;
-
-    public Array(long length) {
-        this.length = length;
-    }
 }

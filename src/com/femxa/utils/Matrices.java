@@ -4,31 +4,85 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Matrices {
-    
+
     // Ejercicio 1: Crear una método que dado un número cree una matriz de números desde 1 
     // hasta dicho número. Imprimir los números impares y devolver la matriz.
     // PROHIBICIÓN: No se pueden usar estructuras IF
-    public int[] matNumbers(Scanner sc){
-        int[] numbers = new int[sc.nextInt()];       
+    public int[] matNumbers(Scanner sc) {
+        int[] numbers = new int[sc.nextInt()];
         for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = i+1;
-        }  
+            numbers[i] = i + 1;
+        }
         for (int i = 0; i < numbers.length; i++) {
             System.out.println(numbers[i]);
         }
         return numbers;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    public void ejemplos(){
-          String[] nombres = new String[4]; // 0 hasta lenght-1
+
+    public void breakContinue() {
+        int result = 0;
+        BucleA:
+        for (int i = 0; i < 2; i++) { //Labels
+            System.out.println("Estoy en A");
+            //result++;
+            BucleB:
+            for (int j = 0; j < 2; j++) { 
+                System.out.println("\tEstoy en B");
+                //if (result>50) break;
+                BucleC:
+                for (int k = 0; k < 2; k++) {
+                    System.out.println("\t\tEstoy en C");
+                    if(i%2==0) continue BucleA;
+                    if(k>j) break;
+                    result++;
+                }
+            }
+        }
+        System.out.println(result);
+    }
+
+    public void showArray3D(int[][][] args) {
+        for (int[][] arg : args) {
+            for (int[] is : arg) {
+                for (int i : is) {
+                    System.out.println(i);
+                }
+            }
+        }
+    }
+
+    public void showArray3D(int[][][] args, String name) {
+        for (int[][] arg : args) {
+            for (int[] is : arg) {
+                for (int i : is) {
+                    System.out.println(name + " " + i);
+                }
+            }
+        }
+    }
+
+    public void showArray3D(String[][][] args) {
+        for (String[][] arg : args) {
+            for (String[] is : arg) {
+                for (String i : is) {
+                    System.out.println(i);
+                }
+            }
+        }
+    }
+
+    public void showArray3D(Perro[][][] args) {
+        for (Perro[][] arg : args) {
+            for (Perro[] is : arg) {
+                for (Perro i : is) {
+                    System.out.println(i);
+                }
+            }
+        }
+    }
+
+    public void ejemplos() {
+        String[] nombres = new String[4]; // 0 hasta lenght-1
         nombres[0] = "Ricardo";
         nombres[1] = "Adolfo";
         nombres[2] = "Aroa";
@@ -47,7 +101,7 @@ public class Matrices {
         Perro perro3 = new Perro("Smurpy", "Bull Dog", 8.7, "gris");
         Perro perro4 = new Perro("Odin", "American Stanford", 34.3, "blanco");
         perro1.ladrar();
-      
+
         System.out.println(perro1); //perro1.toString();
 //        Perro[][] perros = new Perro[2][2];
 //        perros[0][0] = perro1;
@@ -60,15 +114,14 @@ public class Matrices {
 //        System.out.println(perros[0].ladrar());
 //        System.out.println(perro1.ladrar());
 
-        int [][][] numeros = new int[][][]
-                             { 
-                             { {1,5,7},{2,6,8} },
-                             { {9,4,3,88} },
-                             { {10,20,30} , {60,80,90} , {100,200,300} } 
-                             };
+        int[][][] numeros = new int[][][]{
+            {{1, 5, 7}, {2, 6, 8}},
+            {{9, 4, 3, 88}},
+            {{10, 20, 30}, {60, 80, 90}, {100, 200, 300}}
+        };
         System.out.println(Arrays.toString(numeros[2][2]));
-        
-        String [][][] cube = new String[2][2][2];
+
+        String[][][] cube = new String[2][2][2];
         cube[0][0][0] = "Cuarto de inicio. Sin peligros";
         cube[0][0][1] = "Cuarto de fuego. Peligro";
         cube[0][1][0] = "Cuarto de cuchillos. Peligro";
@@ -77,15 +130,17 @@ public class Matrices {
         cube[1][0][1] = "Cuarto de colchonetas. Depende";
         cube[1][1][0] = "Cuarto de rayos laser. Muerte asegurada";
         cube[1][1][1] = "Salida";
-        
-        Perro [][][] perros3D = new Perro[2][][];
-        perros3D[0] = perros; 
+
+        Perro[][][] perros3D = new Perro[2][][];
+        perros3D[0] = perros;
         perros3D[1] = perros;
-        
+
         System.out.println(cube[1][1][1]);
+
     }
-    
+
 }
+
 class Perro {
 
     String nombre;
